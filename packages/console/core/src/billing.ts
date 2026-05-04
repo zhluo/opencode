@@ -296,6 +296,7 @@ export namespace Billing {
       coupon: z.string().optional(),
     }),
     async ({ seats, coupon }) => {
+      Actor.assertAdmin()
       const user = Actor.assert("user")
       const billing = await Database.use((tx) =>
         tx
